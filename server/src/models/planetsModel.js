@@ -12,37 +12,37 @@ function isHabitablePlanet(planet) {
     && planet['koi_prad'] < 1.6;
 }
 
-
-function loadPlanetsData(){
-   return new Promise((resolve, rejects) =>{
-        fs.createReadStream(path.join(__dirname,'..','..','data','kepler_data.csv'))
-        .pipe(parse({
+function loadPlanetsData() {
+  return new Promise((resolve, rejects) => {
+    fs.createReadStream(path.join(__dirname, '..', '..', 'data', 'kepler_data.csv'))
+      .pipe(parse({
         comment: '#',
         columns: true,
-        }))
-        .on('data', (data) => {
+      }))
+      .on('data', (data) => {
         if (isHabitablePlanet(data)) {
-            habitablePlanets.push(data);
+          habitablePlanets.push(data);
         }
-        })
-        .on('error', (err) => {
+      })
+      .on('error', (err) => {
         console.log(err);
         rejects(err);
-        })
-        .on('end', () => {
+      })
+      .on('end', () => {
         console.log(habitablePlanets.map((planet) => {
-            return planet['kepler_name'];
+          return planet['kepler_name'];
         }));
         console.log(`${habitablePlanets.length} habitable planets found!`);
         resolve();
-    });
-   });
+      });
+  });
 }
 
-function getAllPlanets(){
-    return habitablePlanets;
+function getAllPlanets() {
+  return habitablePlanets;
 }
-  module.exports = {
-    loadPlanetsData,
-    getAllPlanets,
-  };
+module.exports = {
+  loadPlanetsData,
+  planets: habitablePlanets,
+  //getAllPlanets,
+};
