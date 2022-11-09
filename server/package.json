@@ -4,7 +4,7 @@
   "description": "NASA Mission Controll API",
   "main": "src/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "node test/index.test.js",
     "watch": "nodemon src/server.js",
     "start": "node src/server.js"
   },
@@ -13,7 +13,8 @@
   "license": "ISC",
   "devDependencies": {
     "express": "^4.18.2",
-    "nodemon": "^2.0.20"
+    "nodemon": "^2.0.20",
+    "supertest": "^6.3.1"
   },
   "dependencies": {
     "cors": "^2.8.5",
