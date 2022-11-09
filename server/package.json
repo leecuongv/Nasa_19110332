@@ -2,9 +2,9 @@
   "name": "nasa-project-api",
   "version": "1.0.0",
   "description": "NASA Mission Controll API",
-  "main": "src/server.js",
-  "scripts": {
-    "test": "node test/index.test.js",
+    "main": "src/server.js",
+    "scripts": {
+    "test": "node src/app.js",
     "watch": "nodemon src/server.js",
     "start": "node src/server.js"
   },
